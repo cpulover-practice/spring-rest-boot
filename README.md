@@ -18,6 +18,19 @@
 [[User]()]
 - HATEOAS
 
+### Internationalization
+1. Configure LocaleResolver and default Locale 
+[[SpringRestBootApplication]()]
+2. Create resource for messages (important: use ```_```) 
+[[message.properties]()] [[message_french.properties]()] [[message_vietnam.properties]()]
+3. Configure ResourceBundleMessageSource with the created sources 
+   - In the application 
+[[SpringRestBootApplication]()]
+   - In 
+[application.properties]()
+4. Inject the MessageSource into Rest Controller 
+[[DemoRestController]()]
+5. Update the internationalized API
 
 
 ### Notes
