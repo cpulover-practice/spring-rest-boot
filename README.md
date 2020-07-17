@@ -7,6 +7,7 @@
 - Lombok
 - Spring Boot DevTools
 - Validation
+- Spring HATEOAS
 
 ### Rest Controller
 [[UserRestController]()]
@@ -15,6 +16,9 @@
 - Recommend: return customized error for single entity methods (GET, DELETE) in case not found
 - Recommend: apply Validation API for POST, PUT method 
 [[User]()]
+- HATEOAS
+
+
 
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
