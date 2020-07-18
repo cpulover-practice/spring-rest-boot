@@ -32,7 +32,12 @@
 [[DemoRestController]()]
 5. Update the internationalized API
 
-
+### Negotiation: XML Support
+- Add Jackson Dataformat XML dependency 
+[[URL](https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml)]
+- Support XML request and response
+- To get XML response, set "Accept" key header as "application/xml" in REST client tool
+- If both XML and JSON is enable, XML is selected as response format in the browser
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
 [[DemoRestController]()]
