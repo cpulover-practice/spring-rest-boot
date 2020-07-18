@@ -8,6 +8,8 @@
 - Spring Boot DevTools
 - Validation
 - Spring HATEOAS
+- Spring Boot Actuator: supports monitoring
+- Spring Data REST HAL Broswer: supports monitoring
 
 ### Rest Controller
 [[UserRestController]()]
@@ -33,12 +35,26 @@
 5. Update the internationalized API
 
 ### Negotiation: XML Support
+- Support XML request and response
 - Add Jackson Dataformat XML dependency 
 [[URL](https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml)]
-- Support XML request and response
 - To get XML response, set "Accept" key header as "application/xml" in REST client tool
 - If both XML and JSON is enable, XML is selected as response format in the browser
+
+### Swagger: Documentation
+- Add Springfox dependency and SNAPSHOT repository 
+[[pom.xml]()]
+- Create Configuration class and customize the document 
+[[SwaggerConfig]()]
+- Use @ApiModel and @ApiModelProperty to add description for resources in the document 
+[[User]()]
+- Built-in endpoints:
+  - ```/v2/api-docs```
+  - ```/swagger-ui/index.html```
+
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
 [[DemoRestController]()]
+
+
 
