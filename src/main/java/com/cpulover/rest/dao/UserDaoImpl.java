@@ -17,9 +17,9 @@ public class UserDaoImpl {
 	private static int usersCount = 3;
 
 	static {
-		users.add(new User(1, "Hieu1", new Date()));
-		users.add(new User(2, "Hieu2", new Date()));
-		users.add(new User(3, "Hieu3", new Date()));
+		users.add(new User(1, "Hieu1", new Date(),"cpulover1"));
+		users.add(new User(2, "Hieu2", new Date(),"cpulover2"));
+		users.add(new User(3, "Hieu3", new Date(),"cpulover3"));
 	}
 
 	public List<User> findAll() {

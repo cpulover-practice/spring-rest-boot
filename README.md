@@ -59,11 +59,28 @@
 - HAL browser = API client tool (can perform POST/PUT request): root path or ```browser/index.html```
 - Not recommend to use Actuator to monitor for the production because of the performance impact
 
+### Filtering
+Exclude bean fields from the JSON response
+#### Static filtering
+[[User]()]
+- Use @JsonIgnore for bean fields
+- Use @JsonIgnoreProperties for bean class
+
+#### Dynamic filtering
+[[UserFilteringRestController]()]
+1. Create View as collection of different views for the bean 
+[[UserView]()]
+2. Use @JsonView for bean fields 
+[[User]()]
+3. User @JsonView on the request methods to apply the views 
+[[UserFilteringRestController]()]
+
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
 [[DemoRestController]()]
 - Recommend: convert application.properties to application.yml for hierarchical structure
 - To use special characters in application.yml, put in ```''``` or ```""```
-
+- Use ```value``` to map multiple endpoints to one method 
+[[UserFilteringRestController]()]
 
 
