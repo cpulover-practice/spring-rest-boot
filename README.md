@@ -52,9 +52,18 @@
   - ```/v2/api-docs```
   - ```/swagger-ui/index.html```
 
+### Monitoring
+- Depenencies: Spring Boot Actuator and Spring Data REST HAL Broswer
+- Built-in Actuator endpoints 
+[[URL](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)]
+- HAL browser = API client tool (can perform POST/PUT request): root path or ```browser/index.html```
+- Not recommend to use Actuator to monitor for the production because of the performance impact
+
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
 [[DemoRestController]()]
+- Recommend: convert application.properties to application.yml for hierarchical structure
+- To use special characters in application.yml, put in ```''``` or ```""```
 
 
 

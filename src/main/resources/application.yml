@@ -1,0 +1,14 @@
+server:
+  error:
+    include-stacktrace: 'never ' #exclude trace property in error response
+    
+spring:
+  messages: #configure ResourceBundleMessageSource
+    basename: 'internationalization/message ' #include all message*_.properties files
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #include all Actuator endpoints
+        exclude: "beans"  #exclude beans endpoint
