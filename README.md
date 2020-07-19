@@ -61,19 +61,20 @@
 
 ### Filtering
 Exclude bean fields from the JSON response
-#### Static filtering
+#### Static filtering 
 [[User]()]
 - Use @JsonIgnore for bean fields
 - Use @JsonIgnoreProperties for bean class
 
 #### Dynamic filtering
-[[UserFilteringRestController]()]
 1. Create View as collection of different views for the bean 
 [[UserView]()]
 2. Use @JsonView for bean fields 
 [[User]()]
 3. User @JsonView on the request methods to apply the views 
 [[UserFilteringRestController]()]
+
+---
 
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 
