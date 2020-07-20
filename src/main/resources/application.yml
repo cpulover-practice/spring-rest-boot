@@ -3,8 +3,24 @@ server:
     include-stacktrace: 'never ' #exclude trace property in error response
     
 spring:
+  jpa:
+    show-sql: "true"
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: "default"
+  datasource:
+    url: "jdbc:h2:mem:hihi"
   messages: #configure ResourceBundleMessageSource
     basename: 'internationalization/message ' #include all message*_.properties files
+  security: #Spring Security configuration
+   user:
+    name: 'justa'
+    password: 'cpulover'
+  h2:
+    console:
+      enabled: "true"
+  
     
 management:
   endpoints:
@@ -12,3 +28,7 @@ management:
       exposure:
         include: "*" #include all Actuator endpoints
         exclude: "beans"  #exclude beans endpoint
+   
+        
+  
+  

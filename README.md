@@ -10,6 +10,7 @@
 - Spring HATEOAS
 - Spring Boot Actuator: supports monitoring
 - Spring Data REST HAL Broswer: supports monitoring
+- Spring Security
 
 ### Rest Controller
 [[UserRestController]()]
@@ -84,6 +85,28 @@ Exclude bean fields from the JSON response
 - Media type versioning (a.k.a "content negotiation" or "accept header")
   1. Access the URI in ```value```
   2. Assign Accept header the value in ```produces```
+
+### Basic Authencication: Spring Security
+- Automatically secure all the REST endpoints
+- Default account:
+  - Username: user
+  - Password: generated security password in the console
+- Access in Postman:
+  - Access the URI
+  - Chose Basic Auth for Authorization
+  - Use the account
+- Configure the account in 
+[application.yml]()
+- Disable: ```@SpringBootApplication(exclude = SecurityAutoConfiguration.class)```
+
+### H2 Database
+- Used in development process only
+- Configure 
+[[application.yml]()]
+  - ```spring.h2.console.enable = true```
+  - ```spring.datasource.url = jdbc:h2:mem:...``` : make the database URL a constant
+- Populate data by create SQL script in ```src/main/resources``` (only use ```' '``` instead of ```" "```) 
+- Access H2 database on ```/h2-console``` with the url configured earlier
 
 ---
 

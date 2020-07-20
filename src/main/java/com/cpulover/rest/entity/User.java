@@ -2,6 +2,11 @@ package com.cpulover.rest.entity;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -19,8 +24,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @ApiModel(description="Details for the user")
 //@JsonIgnoreProperties(value = {"name", "birthDate"}) //for static filtering: exclude fields from JSON response
+@Entity
+@Table(name="user")
 public class User {
 	@JsonView(UserView.Id.class)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Size(min=2, message="Name should have at least 2 characters") //for validation
