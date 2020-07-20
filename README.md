@@ -74,6 +74,17 @@ Exclude bean fields from the JSON response
 3. User @JsonView on the request methods to apply the views 
 [[UserFilteringRestController]()]
 
+### Versioning
+[[PersonVersioningController]()]
+- URI versioning
+- Request parameter versioning
+- Header versioning
+  1. Access the URI in ```value```
+  2. Assign the header key and value in ```headers```
+- Media type versioning (a.k.a "content negotiation" or "accept header")
+  1. Access the URI in ```value```
+  2. Assign Accept header the value in ```produces```
+
 ---
 
 ### Notes
