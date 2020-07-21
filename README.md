@@ -100,7 +100,7 @@ Exclude bean fields from the JSON response
 - Disable: ```@SpringBootApplication(exclude = SecurityAutoConfiguration.class)```
 
 ### H2 Database
-- Used in development process only
+- In-memory database, used in development process only
 - Configure 
 [[application.yml]()]
   - ```spring.h2.console.enable = true```
@@ -108,7 +108,15 @@ Exclude bean fields from the JSON response
 - Populate data by create SQL script in ```src/main/resources``` (only use ```' '``` instead of ```" "```) 
 - Access H2 database on ```/h2-console``` with the url configured earlier
 
+### JPA
+- Create Repository interface for entity with @Repository 
+[[UserRepository]()]
+- Create Rest Controller making use of the Repository 
+[[UserJPARestController]()]
+
 ---
+
+
 
 ### Notes
 - @PathVariable and @RequestParam: bind path variable to request method parameter 

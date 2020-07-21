@@ -12,7 +12,7 @@ import com.cpulover.rest.entity.User;
 @Component
 public class UserDaoImpl {
 
-	// simulate a database
+	// simulate a database (in-memory)
 	private static List<User> users=new ArrayList<>();
 	private static int usersCount = 3;
 

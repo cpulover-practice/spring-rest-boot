@@ -2,6 +2,7 @@ package com.cpulover.rest.controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -20,49 +21,48 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cpulover.rest.dao.UserDaoImpl;
 import com.cpulover.rest.entity.User;
+import com.cpulover.rest.repository.UserRepository;
 
 @RestController
-public class UserRestController {
+@RequestMapping("/jpa")
+public class UserJPARestController {
 	@Autowired
-	private UserDaoImpl userDaoImpl;
+	private UserRepository userRepository;
 
 	@GetMapping("/users")
 	public List<User> retrieveAllUsers() {
-		return userDaoImpl.findAll();
+		return userRepository.findAll();
 	}
 
 	@GetMapping("/users/{id}")
-	public EntityModel<User> retrieveUser(@PathVariable int id) {
-		User user = userDaoImpl.findOne(id);
-		if (user == null)
+	public Optional<User> retrieveUser(@PathVariable int id) {
+		Optional<User> user = userRepository.findById(id);
+		if (!user.isPresent())
 			throw new UserNotFoundException("id-" + id);
 
 		// HATEOAS
-		//resource contains data and links associated to this user
-		EntityModel<User> resource = EntityModel.of(user);
-		//create a link to retrieveAllUsers()
-		WebMvcLinkBuilder link1 = WebMvcLinkBuilder
-				.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
-		//rename the link and add to the resource
-		resource.add(link1.withRel("all-users"));
+		// resource contains data and links associated to this user
+//		EntityModel<Optional<User>> resource = EntityModel.of(user);
+//		// create a link to retrieveAllUsers()
+//		WebMvcLinkBuilder link1 = WebMvcLinkBuilder
+//				.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+//		// rename the link and add to the resource
+//		resource.add(link1.withRel("all-users"));
 
-		
-		return resource;
+		return user;
 	}
 
 	@DeleteMapping("/users/{id}")
 	public void deleteUser(@PathVariable int id) {
-		User user = userDaoImpl.deleteById(id);
+		userRepository.deleteById(id);
 
-		if(user==null)
-			throw new UserNotFoundException("id-"+ id);		
 	}
 
 	//
 
 	@PostMapping("/users")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
-		User savedUser = userDaoImpl.save(user);
+		User savedUser = userRepository.save(user);
 
 		// get the uri of new created user
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedUser.getId())
